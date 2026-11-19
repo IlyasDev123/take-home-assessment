@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'DM Mono', ui-monospace, monospace;
+
+    --color-pf-bg:        #09090b;
+    --color-pf-surface:   #111113;
+    --color-pf-card:      #18181b;
+    --color-pf-border:    #27272a;
+    --color-pf-muted:     #3f3f46;
+    --color-pf-accent:    #6366f1;
+    --color-pf-accent-hl: #818cf8;
+}
+
+@layer base {
+    html, body {
+        background-color: var(--color-pf-bg);
+        color: #fafafa;
+    }
+
+    * {
+        border-color: var(--color-pf-border);
+    }
+}
+
+@layer utilities {
+    .font-display { font-family: var(--font-display); }
+    .font-mono    { font-family: var(--font-mono); }
+
+    .bg-pf-bg      { background-color: var(--color-pf-bg); }
+    .bg-pf-surface { background-color: var(--color-pf-surface); }
+    .bg-pf-card    { background-color: var(--color-pf-card); }
+    .border-pf     { border-color: var(--color-pf-border); }
+    .text-pf-muted { color: #71717a; }
+    .text-pf-accent { color: var(--color-pf-accent); }
+
+    .ring-pf-accent { --tw-ring-color: var(--color-pf-accent); }
+
+    .animate-fade-in {
+        animation: fadeIn 0.4s ease-out both;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.4s ease-out both;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
