@@ -7,10 +7,9 @@ namespace App\Listeners;
 use App\Domain\Billing\Services\CreditService;
 use App\Domain\Billing\ValueObjects\Money;
 use App\Domain\Generation\Events\GenerationCompleted;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-final class HandleGenerationCompleted implements ShouldQueue
+final class HandleGenerationCompleted
 {
     public function __construct(private readonly CreditService $creditService) {}
 

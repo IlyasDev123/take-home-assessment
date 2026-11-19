@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Listeners;
 
 use App\Domain\Generation\Events\GenerationFailed;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-final class HandleGenerationFailed implements ShouldQueue
+final class HandleGenerationFailed
 {
     public function handle(GenerationFailed $event): void
     {
