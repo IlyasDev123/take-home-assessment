@@ -135,18 +135,32 @@ final class PixelforgeClient
             throw PixelforgeException::connectionFailed($e->getMessage());
         }
 
-        if ($response->status() === 429) {
+        $status = $response->status();
+
+        if ($status === 401) {
+            throw PixelforgeException::invalidApiKey();
+        }
+
+        if ($status === 409) {
+            throw PixelforgeException::fromHttpStatus(409, $response->json() ?: []);
+        }
+
+        if ($status === 429) {
             $retryAfter = (int) ($response->header('Retry-After') ?: 60);
             throw PixelforgeException::rateLimited($retryAfter);
         }
 
-        if ($response->status() === 503) {
+        if ($status === 503) {
             $retryAfter = (int) ($response->header('Retry-After') ?: 30);
             throw PixelforgeException::overloaded($retryAfter);
         }
 
         if ($response->serverError()) {
-            throw PixelforgeException::serverError($response->status(), $response->body());
+            throw PixelforgeException::serverError($status, $response->body());
+        }
+
+        if ($response->clientError()) {
+            throw PixelforgeException::fromHttpStatus($status, $response->json() ?: []);
         }
 
         $response->throw();

@@ -12,6 +12,7 @@ use App\Domain\Generation\Exceptions\InsufficientCreditsException;
 use App\Domain\Generation\Models\Generation;
 use App\Http\Requests\CreateGenerationRequest;
 use App\Http\Resources\GenerationResource;
+use App\Infrastructure\Pixelforge\Client\PixelforgeException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -64,6 +65,16 @@ final class GenerationController extends Controller
             return redirect()
                 ->route('generations.create')
                 ->with('error', $e->getMessage());
+        } catch (PixelforgeException $e) {
+            // Job failed synchronously (QUEUE_CONNECTION=sync) — generation
+            // has already been marked failed by the service layer.
+            return redirect()
+                ->route('generations.create')
+                ->with('error', $e->getMessage());
+        } catch (\Throwable $e) {
+            return redirect()
+                ->route('generations.create')
+                ->with('error', 'Something went wrong while submitting your generation. Please try again.');
         }
 
         return redirect()

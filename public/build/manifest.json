@@ -1,28 +1,28 @@
 {
-  "_AppLayout-Dw9qvtq1.js": {
-    "file": "assets/AppLayout-Dw9qvtq1.js",
+  "_AppLayout-BEnC7vQP.js": {
+    "file": "assets/AppLayout-BEnC7vQP.js",
     "name": "AppLayout",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_GenerationCard-VSQdq0ZE.js": {
-    "file": "assets/GenerationCard-VSQdq0ZE.js",
+  "_GenerationCard-BwwMBgYf.js": {
+    "file": "assets/GenerationCard-BwwMBgYf.js",
     "name": "GenerationCard",
     "imports": [
       "resources/js/app.ts",
-      "_StatusBadge-Dcc4rgS7.js"
+      "_StatusBadge-CoL8j3X1.js"
     ]
   },
-  "_StatusBadge-Dcc4rgS7.js": {
-    "file": "assets/StatusBadge-Dcc4rgS7.js",
+  "_StatusBadge-CoL8j3X1.js": {
+    "file": "assets/StatusBadge-CoL8j3X1.js",
     "name": "StatusBadge",
     "imports": [
       "resources/js/app.ts"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DMnCice6.css",
+    "file": "assets/app-9M-lYtXI.css",
     "name": "app",
     "names": [
       "app.css"
@@ -31,17 +31,17 @@
     "isEntry": true
   },
   "resources/js/Pages/Admin/Report.vue": {
-    "file": "assets/Report-DUkEnQhP.js",
+    "file": "assets/Report-BekMlg70.js",
     "name": "Report",
     "src": "resources/js/Pages/Admin/Report.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js"
+      "_AppLayout-BEnC7vQP.js"
     ]
   },
   "resources/js/Pages/Auth/Login.vue": {
-    "file": "assets/Login-BVzzhRm5.js",
+    "file": "assets/Login-2gfeFGtc.js",
     "name": "Login",
     "src": "resources/js/Pages/Auth/Login.vue",
     "isDynamicEntry": true,
@@ -50,7 +50,7 @@
     ]
   },
   "resources/js/Pages/Auth/Register.vue": {
-    "file": "assets/Register-ZCGQ1og9.js",
+    "file": "assets/Register-DK2Pwp-v.js",
     "name": "Register",
     "src": "resources/js/Pages/Auth/Register.vue",
     "isDynamicEntry": true,
@@ -59,70 +59,70 @@
     ]
   },
   "resources/js/Pages/Credits/Buy.vue": {
-    "file": "assets/Buy-DLsPprYT.js",
+    "file": "assets/Buy-CthSZCsr.js",
     "name": "Buy",
     "src": "resources/js/Pages/Credits/Buy.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js"
+      "_AppLayout-BEnC7vQP.js"
     ]
   },
   "resources/js/Pages/Credits/Index.vue": {
-    "file": "assets/Index-DRU7oaH3.js",
+    "file": "assets/Index-ITWekGlU.js",
     "name": "Index",
     "src": "resources/js/Pages/Credits/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js"
+      "_AppLayout-BEnC7vQP.js"
     ]
   },
   "resources/js/Pages/Dashboard.vue": {
-    "file": "assets/Dashboard-Ja6JNEqz.js",
+    "file": "assets/Dashboard-Do5uQzZz.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js",
-      "_GenerationCard-VSQdq0ZE.js"
+      "_AppLayout-BEnC7vQP.js",
+      "_GenerationCard-BwwMBgYf.js"
     ]
   },
   "resources/js/Pages/Generations/Create.vue": {
-    "file": "assets/Create-cg-pAa_6.js",
+    "file": "assets/Create-VBBL5aFp.js",
     "name": "Create",
     "src": "resources/js/Pages/Generations/Create.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js"
+      "_AppLayout-BEnC7vQP.js"
     ]
   },
   "resources/js/Pages/Generations/Index.vue": {
-    "file": "assets/Index-DW0ohpdv.js",
+    "file": "assets/Index-CyRx6Dy5.js",
     "name": "Index",
     "src": "resources/js/Pages/Generations/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js",
-      "_GenerationCard-VSQdq0ZE.js"
+      "_AppLayout-BEnC7vQP.js",
+      "_GenerationCard-BwwMBgYf.js"
     ]
   },
   "resources/js/Pages/Generations/Show.vue": {
-    "file": "assets/Show-BV6_KdKr.js",
+    "file": "assets/Show-pkysVz41.js",
     "name": "Show",
     "src": "resources/js/Pages/Generations/Show.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_AppLayout-Dw9qvtq1.js",
-      "_StatusBadge-Dcc4rgS7.js"
+      "_AppLayout-BEnC7vQP.js",
+      "_StatusBadge-CoL8j3X1.js"
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-BapDICX2.js",
+    "file": "assets/app-DgSYJWeS.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -138,7 +138,7 @@
       "resources/js/Pages/Generations/Show.vue"
     ],
     "css": [
-      "assets/app-DMnCice6.css"
+      "assets/app-9M-lYtXI.css"
     ]
   }
 }
