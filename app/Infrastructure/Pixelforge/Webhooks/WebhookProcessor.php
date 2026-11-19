@@ -15,6 +15,7 @@ use App\Domain\Generation\Models\GenerationWebhookEvent;
 use App\Infrastructure\Pixelforge\DTOs\WebhookPayload;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Throwable;
 
 final class WebhookProcessor
 {
@@ -102,7 +103,19 @@ final class WebhookProcessor
         }
 
         $generation->save();
-        GenerationCompleted::dispatch($generation);
+
+        // Dispatch AFTER the transaction commits so a credit-deduction failure
+        // cannot roll back the status update and leave the generation stuck.
+        DB::afterCommit(function () use ($generation): void {
+            try {
+                GenerationCompleted::dispatch($generation);
+            } catch (Throwable $e) {
+                Log::error('Failed to fire GenerationCompleted event.', [
+                    'generation_id' => $generation->id,
+                    'error'         => $e->getMessage(),
+                ]);
+            }
+        });
     }
 
     private function handleFailed(Generation $generation, WebhookPayload $payload): void
@@ -110,13 +123,21 @@ final class WebhookProcessor
         $generation->transitionTo(GenerationStatus::Failed);
         $generation->failure_reason       = $payload->failureReason;
         $generation->error_code           = $payload->errorCode;
-        // Failed generations are never billed — zero cost
         $generation->actual_provider_cost = '0.000000';
         $generation->actual_user_cost     = '0.000000';
         $generation->completed_at         = now();
         $generation->save();
 
-        GenerationFailed::dispatch($generation, $payload->failureReason);
+        DB::afterCommit(function () use ($generation, $payload): void {
+            try {
+                GenerationFailed::dispatch($generation, $payload->failureReason);
+            } catch (Throwable $e) {
+                Log::error('Failed to fire GenerationFailed event.', [
+                    'generation_id' => $generation->id,
+                    'error'         => $e->getMessage(),
+                ]);
+            }
+        });
     }
 
     private function handleProcessing(Generation $generation): void

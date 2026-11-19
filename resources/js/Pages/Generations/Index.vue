@@ -11,7 +11,7 @@ const props = defineProps<{
 
 const hasActiveGenerations = computed(() =>
     props.generations.data.some(g =>
-        g.status.value === 'queued' || g.status.value === 'processing'
+        ['pending', 'queued', 'processing'].includes(g.status.value)
     )
 );
 
@@ -49,7 +49,7 @@ onUnmounted(() => { if (pollInterval) clearInterval(pollInterval); });
         class="flex items-center gap-2.5 mb-6 px-4 py-2.5 rounded-lg bg-blue-500/10 border border-blue-500/25 text-blue-300 text-sm animate-fade-in"
       >
         <div class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-        <span>{{ props.generations.data.filter(g => ['queued','processing'].includes(g.status.value)).length }} generation(s) in progress — auto-refreshing every 10s</span>
+        <span>{{ props.generations.data.filter(g => ['pending','queued','processing'].includes(g.status.value)).length }} generation(s) in progress — auto-refreshing every 10s</span>
       </div>
 
       <!-- Empty state -->

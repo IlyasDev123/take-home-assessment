@@ -17,8 +17,7 @@ const props = defineProps<{
 }>();
 
 const isActive = computed(() =>
-    props.generation.status.value === 'queued' ||
-    props.generation.status.value === 'processing'
+    ['pending', 'queued', 'processing'].includes(props.generation.status.value)
 );
 
 let pollInterval: ReturnType<typeof setInterval> | null = null;
